@@ -1,0 +1,19 @@
+version: "3.7"
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: example
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  web:
+    image: docker-test:1.2
+    depends_on:
+      - db
+    ports:
+      - "5000:8080"
