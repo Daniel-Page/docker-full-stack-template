@@ -1,18 +1,15 @@
-version: "3.7"
+version: "3.8"
 services:
   db:
-    image: postgres
+    image: postgres:14
     environment:
       POSTGRES_PASSWORD: postgres
       POSTGRES_USER: postgres
-      POSTGRES_DB: example
+      POSTGRES_DB: template
     volumes:
       - ./pgdata:/var/lib/postgresql/data
-    ports:
-      - "5432:5432"
-
   web:
-    image: docker-test:1.2
+    build: .
     depends_on:
       - db
     ports:
