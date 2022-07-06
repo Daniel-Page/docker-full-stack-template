@@ -7,13 +7,13 @@ var knex = require("knex")({
     port: "5432",
     user: "postgres",
     password: "postgres",
-    database: "users",
+    database: "main",
   },
 });
 
 app.use(express.static(__dirname + "/public"));
 
-app.use(express.json());
+app.use(express.json()); // Necessary?
 
 app.get("/get-users", async (req, res) => {
   const result = await knex.select("*").from("users");
@@ -25,7 +25,10 @@ app.get("/get-users", async (req, res) => {
 app.post("/add-user", async (req, res) => {
   // console.log(req.body.value);
   res.status(200).send({ status: "OK" });
-  const result = await knex("users").insert({ name: req.body.name });
+  const result = await knex("users").insert({
+    name: req.body.name,
+    email: req.body.email,
+  });
 });
 
 const PORT = 8080;
