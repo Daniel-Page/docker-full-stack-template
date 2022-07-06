@@ -11,11 +11,21 @@ var knex = require("knex")({
   },
 });
 
-app.get("/users", async (req, res) => {
+app.use(express.static(__dirname + "/public"));
+
+app.use(express.json());
+
+app.get("/get-users", async (req, res) => {
   const result = await knex.select("*").from("users");
   res.json({
     users: result,
   });
+});
+
+app.post("/add-user", async (req, res) => {
+  // console.log(req.body.value);
+  res.status(200).send({ status: "OK" });
+  const result = await knex("users").insert({ name: req.body.name });
 });
 
 const PORT = 8080;
