@@ -5,11 +5,11 @@ const email = document.getElementById("email");
 const getUsers = async () => {
   const response = await fetch("/get-users");
   const myJson = await response.json();
-  for (let i=0;i<myJson.Users.length;i++) {
-    textBox.innerText += myJson.Users[i].name;
+  for (let i=0;i<myJson.users.length;i++) {
+    textBox.innerText += myJson.users[i].name;
     textBox.innerText += " ";
-    textBox.innerText += myJson.Users[i].email;
-    if (i!=myJson.Users.length-1) {
+    textBox.innerText += myJson.users[i].email;
+    if (i!=myJson.users.length-1) {
       textBox.innerText += "\n";
     }
   }
