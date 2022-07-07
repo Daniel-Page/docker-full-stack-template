@@ -3,7 +3,7 @@ var app = express();
 var knex = require("knex")({
   client: "pg",
   connection: {
-    connectionString: process.env.DATABASE_URL + "?ssl=true",
+    connectionString: process.env.DATABASE_URL,
   },
 }); // https://stackoverflow.com/questions/26109649/connecting-postgres-heroku-with-knex-not-working
 
