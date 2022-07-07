@@ -1,18 +1,25 @@
 var express = require("express");
 var app = express();
-var knex = require("knex")({
+const knex = require("knex");
+const parse = require("pg-connection-string").parse;
+
+// Parse the environment variable into an object containing User, Password, Host, Port etc at separate key-value pairs
+const pgconfig = parse(process.env.DATABASE_URL);
+
+// Add SSL setting to default environment variable on a new key-value pair (the value itself is an object)
+pgconfig.ssl = { rejectUnauthorized: false };
+
+const db = knex({
   client: "pg",
-  connection: {
-    connectionString: process.env.DATABASE_URL,
-  },
-}); // https://stackoverflow.com/questions/26109649/connecting-postgres-heroku-with-knex-not-working
+  connection: pgconfig,
+});
 
 app.use(express.static(__dirname + "/public"));
 
 app.use(express.json()); // Necessary?
 
 app.get("/get-users", async (req, res) => {
-  const result = await knex.select("*").from("users");
+  const result = await db.select("*").from("users");
   res.json({
     users: result,
   });
@@ -21,7 +28,7 @@ app.get("/get-users", async (req, res) => {
 app.post("/add-user", async (req, res) => {
   // console.log(req.body.value);
   res.status(200).send({ status: "OK" });
-  const result = await knex("users").insert({
+  const result = await db("users").insert({
     name: req.body.name,
     email: req.body.email,
   });
