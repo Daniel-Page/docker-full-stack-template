@@ -3,13 +3,10 @@ var app = express();
 var knex = require("knex")({
   client: "pg",
   connection: {
-    host: "db",
-    port: "5432",
-    user: "postgres",
-    password: "postgres",
-    database: "main",
+    connectionString : process.env.DATABASE_URL,
+    ssl: false
   },
-});
+}); // https://stackoverflow.com/questions/26109649/connecting-postgres-heroku-with-knex-not-working
 
 app.use(express.static(__dirname + "/public"));
 
