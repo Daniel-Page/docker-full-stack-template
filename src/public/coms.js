@@ -5,7 +5,10 @@ const email = document.getElementById("email");
 const getUsers = async () => {
   const response = await fetch("/get-users");
   const myJson = await response.json();
-  textBox.innerText = JSON.stringify(myJson);
+  for (txt in myJson) {
+    textBox.innerText += myJson[txt];
+    textBox.innerText += "\n";
+  }
 };
 
 const addUser = async () => {
