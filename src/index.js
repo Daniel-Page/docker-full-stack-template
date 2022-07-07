@@ -33,6 +33,6 @@ app.post("/add-user", async (req, res) => {
 
 const PORT = 8080;
 
-app.listen(PORT, () => {
+app.listen(process.env.PORT || PORT, () => {
   console.log(`Running on PORT ${PORT}`);
 });
