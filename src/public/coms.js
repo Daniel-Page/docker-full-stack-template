@@ -16,6 +16,6 @@ const addUser = async () => {
       "Content-Type": "application/json",
     },
   });
-  // const myJson = await response.json(); //extract JSON from the http response
-  //console.log(myJson);
+  const myJson = await response.json(); //extract JSON from the http response
+  console.log(myJson);
 };
