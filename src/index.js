@@ -4,16 +4,36 @@ var app = express();
 const knex = require("knex");
 const parse = require("pg-connection-string").parse;
 
-// Parse the environment variable into an object containing User, Password, Host, Port etc at separate key-value pairs
-const pgconfig = parse(process.env.DATABASE_URL);
+if (process.env.ENVIRONMENT == "production") {
+  // Parse the environment variable into an object containing User, Password, Host, Port etc at separate key-value pairs
+  const pgconfig = parse(process.env.DATABASE_URL);
 
-// Add SSL setting to default environment variable on a new key-value pair (the value itself is an object)
-pgconfig.ssl = { rejectUnauthorized: false };
+  // Add SSL setting to default environment variable on a new key-value pair (the value itself is an object)
+  pgconfig.ssl = {
+    rejectUnauthorized: false
+  };
+}
 
-const db = knex({
-  client: "pg",
-  connection: pgconfig,
-});
+var connections = {
+  development: {
+    client: "pg",
+    connection: {
+      host: "db",
+      port: "5432",
+      user: "postgres",
+      password: "postgres",
+      database: "main",
+    },
+  },
+  production: {
+    client: "pg",
+    connection: pgconfig,
+  }
+}
+
+const environment = process.env.ENVIRONMENT || 'production'
+
+const db = knex(connections[environment]);
 
 app.use(express.static(__dirname + "/public"));
 
@@ -27,7 +47,9 @@ app.get("/get-users", async (req, res) => {
 });
 
 app.post("/add-user", async (req, res) => {
-  res.status(200).send({ status: "OK" });
+  res.status(200).send({
+    status: "OK"
+  });
   const result = await db("users").insert({
     name: req.body.name,
     email: req.body.email,

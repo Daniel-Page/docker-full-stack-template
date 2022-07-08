@@ -10,6 +10,8 @@ COPY . .
 
 ENV PORT=8080
 
+ENV ENVIRONMENT="development"
+
 EXPOSE 8080
 
 CMD ["npm", "start"]
