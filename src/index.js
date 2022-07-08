@@ -10,12 +10,14 @@ if (process.env.ENVIRONMENT == "production") {
 
   // Add SSL setting to default environment variable on a new key-value pair (the value itself is an object)
   pgconfig.ssl = {
-    rejectUnauthorized: false
+    rejectUnauthorized: false,
   };
-}
-
-var connections = {
-  development: {
+  var config = {
+    client: "pg",
+    connection: pgconfig,
+  };
+} else if (process.env.ENVIRONMENT == "development") {
+  var config = {
     client: "pg",
     connection: {
       host: "db",
@@ -24,16 +26,10 @@ var connections = {
       password: "postgres",
       database: "main",
     },
-  },
-  production: {
-    client: "pg",
-    connection: pgconfig,
-  }
+  };
 }
 
-const environment = process.env.ENVIRONMENT || 'production'
-
-const db = knex(connections[environment]);
+const db = knex(config);
 
 app.use(express.static(__dirname + "/public"));
 
@@ -48,7 +44,7 @@ app.get("/get-users", async (req, res) => {
 
 app.post("/add-user", async (req, res) => {
   res.status(200).send({
-    status: "OK"
+    status: "OK",
   });
   const result = await db("users").insert({
     name: req.body.name,
