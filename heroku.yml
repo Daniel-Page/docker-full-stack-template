@@ -3,7 +3,5 @@ setup:
     - plan: heroku-postgresql
       as: DATABASE
 build:
-  config:
-    ENVIRONMENT: production
   docker:
     web: Dockerfile
