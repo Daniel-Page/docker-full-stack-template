@@ -16,6 +16,7 @@ if (process.env.ENVIRONMENT == "development") {
     },
   };
 } else {
+  // Could possibly use config vars on Heroku check env variable?
   // Parse the environment variable into an object containing User, Password, Host, Port etc at separate key-value pairs
   const pgconfig = parse(process.env.DATABASE_URL);
 
@@ -52,8 +53,6 @@ app.post("/add-user", async (req, res) => {
   });
 });
 
-const PORT = 8080;
-
-app.listen(process.env.PORT || PORT, () => {
-  console.log(`Running on PORT ${PORT}`);
+app.listen(process.env.PORT, () => {
+  console.log(`Running on PORT ${process.env.PORT}`);
 });
