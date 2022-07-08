@@ -4,6 +4,10 @@ var app = express();
 const knex = require("knex");
 const parse = require("pg-connection-string").parse;
 
+console.log("%%%%%%%%%%%%%");
+console.log(process.env.ENVIRONMENT);
+console.log("%%%%%%%%%%%%%");
+
 if (process.env.ENVIRONMENT == "production") {
   // Parse the environment variable into an object containing User, Password, Host, Port etc at separate key-value pairs
   const pgconfig = parse(process.env.DATABASE_URL);
