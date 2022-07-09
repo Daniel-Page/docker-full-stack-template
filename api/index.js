@@ -1,8 +1,8 @@
 var express = require("express");
 var app = express();
-
 const knex = require("knex");
 const parse = require("pg-connection-string").parse;
+var cors = require("cors");
 
 if (process.env.ENVIRONMENT == "development") {
   var config = {
@@ -32,11 +32,13 @@ if (process.env.ENVIRONMENT == "development") {
 
 const db = knex(config);
 
-app.use(express.static(__dirname + "/public"));
+app.use(cors()); // Do I need this?
 
 app.use(express.json()); // Necessary?
 
-app.get("/get-users", async (req, res) => {
+// app.use(express.static(__dirname + "/public"));
+
+app.get("/app/get-users", async (req, res) => {
   const result = await db.select("*").from("users");
   res.json({
     users: result,
