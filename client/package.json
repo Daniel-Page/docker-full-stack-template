@@ -1,6 +1,5 @@
 {
-  "name": "your-project-name",
-  "version": "0.1.0",
+  "name": "full-stack-web-app-example",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",

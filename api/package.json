@@ -1,21 +1,8 @@
 {
-  "name": "docker-test",
-  "version": "1.0.0",
-  "description": "A docker test.",
-  "main": "index.js",
+  "name": "full-stack-web-app-example",
   "scripts": {
     "start": "node index.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Daniel-Page/docker-test.git"
-  },
-  "author": "Daniel Page",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Daniel-Page/docker-test/issues"
-  },
-  "homepage": "https://github.com/Daniel-Page/docker-test#readme",
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.18.1",

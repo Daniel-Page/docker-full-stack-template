@@ -1,6 +1,6 @@
-# Docker Full Stack Template
+# Full Stack Web App Example
 
-```
+<!-- ```
 $docker build -t docker-test:1.0.0 .
 ```
 
@@ -24,16 +24,16 @@ list databases \list or \l
 connect \c
 
 
-```
+``` -->
 
 ```
-$docker-compose up --build -d
+$docker-compose up -d
 ```
 
-```
+<!-- ```
 $docker-compose down
 ```
 
 heroku stack:set container -a docker-test-postgres-example
 heroku pg:psql -a docker-full-stack-template
-export PATH=/Library/PostgreSQL/14/bin:$PATH
+export PATH=/Library/PostgreSQL/14/bin:$PATH -->
