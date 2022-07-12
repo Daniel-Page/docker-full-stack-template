@@ -1,35 +1,35 @@
-import logo from "./logo.svg";
 import "./App.css";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <form>
-          <label>Name</label>
-          <input type="text" id="name" />
-          <label>Email</label>
-          <input type="text" id="email" />
-        </form>
-        <button onClick={GetUsers}>Show Users</button>
-      </header>
+      <h1>Full Stack Web App Example</h1>
+      <form>
+        <label>
+          <b>Username</b>
+        </label>
+        <input
+          type="text"
+          placeholder="Enter Username"
+          name="uname"
+          required
+        ></input>
+        <label>
+          <b>Password</b>
+        </label>
+        <input
+          type="password"
+          placeholder="Enter Password"
+          name="psw"
+          required
+        ></input>
+        <button onClick={GetUsers}>Login</button>
+      </form>
     </div>
   );
 }
 
-// const textBox = document.getElementById("textBox");
+const username = document.getElementsByName("uname");
 // const userName = document.getElementById("name");
 // const email = document.getElementById("email");
 
