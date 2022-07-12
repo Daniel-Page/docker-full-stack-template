@@ -1,8 +1,8 @@
-CREATE TABLE IF NOT EXISTS users (
+CREATE TABLE accounts ( -- Check what happens if data already exists?
     id SERIAL PRIMARY KEY,
-    name VARCHAR(30),
-    email VARCHAR(30)
+    username VARCHAR(30),
+    password VARCHAR(30)
 );
 
-INSERT INTO users (name, email) --What if this already exists?
-    VALUES ('Joe Blogs', 'joe.blogs@example.com');
+INSERT INTO accounts (username, password)
+    VALUES ('joe.blogs', 'test123'); -- Single quotes necessary

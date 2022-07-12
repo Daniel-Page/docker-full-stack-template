@@ -29,12 +29,12 @@ function App() {
   );
 }
 
-const username = document.getElementsByName("uname");
+// const username = document.getElementsByName("uname");
 // const userName = document.getElementById("name");
 // const email = document.getElementById("email");
 
 function GetUsers() {
-  fetch("/app/get-users")
+  fetch("/api/get-accounts")
     .then((response) => response.json())
     .then((data) => console.log(data));
 }

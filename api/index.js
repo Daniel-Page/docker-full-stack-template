@@ -38,10 +38,10 @@ app.use(express.json()); // Necessary?
 
 // app.use(express.static(__dirname + "/public"));
 
-app.get("/app/get-users", async (req, res) => {
-  const result = await db.select("*").from("users");
+app.get("/api/get-accounts", async (req, res) => {
+  const result = await db.select("*").from("accounts");
   res.json({
-    users: result,
+    accounts: result,
   });
 });
 
@@ -49,9 +49,9 @@ app.post("/add-user", async (req, res) => {
   res.status(200).send({
     status: "OK",
   });
-  const result = await db("users").insert({
-    name: req.body.name,
-    email: req.body.email,
+  const result = await db("accounts").insert({
+    username: req.body.username,
+    password: req.body.password,
   });
 });
 
