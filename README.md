@@ -26,8 +26,16 @@ connect \c
 
 ``` -->
 
+Start Docker setup:
+
 ```
-$docker-compose up -d
+$make
+```
+
+End Docker setup:
+
+```
+$make down
 ```
 
 <!-- ```
