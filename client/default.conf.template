@@ -1,10 +1,8 @@
-  server {
-    listen $PORT default_server;
-    listen [::]:$PORT;
-    server_name localhost;
-    root /frontend/build;
-    index index.html;
-    location / {
-      try_files $uri /index.html;
-    }
+server {
+  listen $PORT default_server;
+
+  location / {
+    root   /usr/share/nginx/html;
+    index  index.html index.htm;
   }
+}
