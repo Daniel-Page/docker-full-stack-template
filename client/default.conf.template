@@ -1,6 +1,6 @@
   server {
-    listen ${PORT};
-    listen [::]:${PORT};
+    listen $PORT;
+    listen [::]:$PORT;
     server_name localhost;
     root /frontend/build;
     index index.html;

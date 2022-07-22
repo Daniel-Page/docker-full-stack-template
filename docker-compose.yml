@@ -38,3 +38,5 @@ services:
     # tty: true
     depends_on:
       - api # Ensures that api is running before client runs
+    environment:
+      - PORT=80
