@@ -5,4 +5,4 @@ setup:
 build:
   docker:
     api: /api/Dockerfile
-    client: /client/Dockerfile
+    web: /client/Dockerfile
