@@ -1,5 +1,5 @@
   server {
-    listen $PORT;
+    listen $PORT default_server;
     listen [::]:$PORT;
     server_name localhost;
     root /frontend/build;
