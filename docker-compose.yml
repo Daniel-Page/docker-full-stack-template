@@ -39,4 +39,4 @@ services:
     depends_on:
       - api # Ensures that api is running before client runs
     environment:
-      - NGINX_PORT=80
+      - PORT=80
